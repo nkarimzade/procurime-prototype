@@ -66,10 +66,19 @@ Buyer paneli turkuaz (`buyer`), tedarikçi vurguları turuncu (`supplier`), Proc
 
 ## Deploy
 
-`procurime-prototype` klasörünü root olarak Vercel veya Netlify'a bağlaman yeterli. Framework: Next.js, build: `npm run build`, output: default.
+Proje Vercel'e bağlı (`nasibs-projects-59ac3a1e/procurime-prototype`). Production deploy:
 
-Canlı linki aldıktan sonra buraya ekleyebilirsin:
+```bash
+npx vercel@latest deploy --prod
+```
 
+Alternatif: [vercel.com](https://vercel.com) üzerinden repo'yu import et. Framework: Next.js, build: `npm run build`.
+
+GitHub'a push:
+
+```bash
+git remote add origin https://github.com/KULLANICI_ADIN/procurime-prototype.git
+git push -u origin master
 ```
-Demo: (deploy linki)
-```
+
+**Canlı demo:** Deploy tamamlandıktan sonra Vercel'in verdiği `*.vercel.app` linkini buraya yaz.
