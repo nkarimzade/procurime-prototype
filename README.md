@@ -66,4 +66,8 @@ Buyer paneli turkuaz (`buyer`), tedarikçi vurguları turuncu (`supplier`), Proc
 
 ## Deploy
 
-Next.js projesi — build: `npm run build`. Canlı demo linki deploy sonrası buraya eklenebilir.
+**Canlı demo:** [https://procurime-prototype.vercel.app](https://procurime-prototype.vercel.app)
+
+**GitHub:** [https://github.com/nkarimzade/procurime-prototype](https://github.com/nkarimzade/procurime-prototype)
+
+Build: `npm run build`
