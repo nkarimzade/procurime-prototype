@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
-import { setAuthenticated, validateLogin } from "@/lib/auth";
+import { isAuthenticated, setAuthenticated, validateLogin } from "@/lib/auth";
 import { DEMO_USER } from "@/lib/constants";
 
 export default function LoginForm() {
@@ -12,6 +12,12 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      router.replace("/dashboard");
+    }
+  }, [router]);
 
   function handleSubmit(e) {
     e.preventDefault();
