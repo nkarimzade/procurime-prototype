@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Procurime Buyer Panel
 
-## Getting Started
+Nabusoft case study kapsamında hazırladığım frontend prototipi. Alıcı (buyer) tarafının temel ekranlarını gösteriyor; gerçek bir backend bağlantısı yok.
 
-First, run the development server:
+## Çalıştırma
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+[http://localhost:3000](http://localhost:3000) adresine git. Otomatik login sayfasına yönlendirir.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Production build:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Giriş bilgileri
 
-To learn more about Next.js, take a look at the following resources:
+Geçerli bir e-posta adresi ve en az 3 karakter şifre ile giriş yapılır.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| | |
+|---|---|
+| Örnek e-posta | `demo@procurime.com` |
+| Örnek şifre | `demo123` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Giriş kontrolü `lib/auth.js` içinde, localStorage ile tutuluyor.
 
-## Deploy on Vercel
+## Demo'da neye bakmalı?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Teklif karşılaştırmanın dolu olduğu RFQ: **RFQ-2025-0047**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Giriş yap
+2. Sol menüden **RFQ'lar** → `RFQ-2025-0047` satırına tıkla
+3. **Teklifler** sekmesi — 3 tedarikçi karşılaştırması burada
+4. İstersen **AI Asistan** linkinden mock chat'i dene (cevaplar `lib/mockAi.js`'den gelir, kelime kelime akar)
+
+RFQ oluşturma formu (`/rfqs/new`) çalışır ama gönderince listeye yazılmaz; başarı mesajı modal ile gösterilir (mock).
+
+## Sayfalar
+
+- `/login` — giriş
+- `/dashboard` — özet metrikler, son aktiviteler
+- `/rfqs` — liste, arama ve filtre
+- `/rfqs/new` — 4 adımlı RFQ formu
+- `/rfqs/[id]` — detay, kalemler, teklif karşılaştırma
+- `/rfqs/[id]/ai` — AI sohbet (mock streaming)
+- `/suppliers` — tedarikçi listesi (bonus ekran)
+
+## Mock veri
+
+Tüm statik veri `lib/mockData.js` dosyasında. AI cevapları ayrı: `lib/mockAi.js`.
+
+Kalem ve teklif detayı `rfq-001`, `rfq-002` ve `rfq-004` için dolu. `rfq-003` taslak olduğu için teklif içermez.
+
+## Teknoloji
+
+Next.js 14 (App Router), React 18, Tailwind CSS, plain JavaScript.
+
+## Renkler
+
+Buyer paneli turkuaz (`buyer`), tedarikçi vurguları turuncu (`supplier`), Procurime logosu mor (`admin`). Tanımlar `tailwind.config.js` içinde.
+
+## Deploy
+
+`procurime-prototype` klasörünü root olarak Vercel veya Netlify'a bağlaman yeterli. Framework: Next.js, build: `npm run build`, output: default.
+
+Canlı linki aldıktan sonra buraya ekleyebilirsin:
+
+```
+Demo: (deploy linki)
+```
